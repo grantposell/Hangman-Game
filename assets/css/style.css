@@ -1,0 +1,37 @@
+body{
+    background-image:url("../images/background.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+h1{
+    font-family:'Bungee Shade', cursive;
+    font-size: 3rem;
+    text-align: center;
+}
+.pressbtn{
+    font-family: 'Inconsolata', monospace;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px;
+
+   
+}
+.hangtable{
+    width: 40rem;
+    margin-left: 18rem;
+    height: 25rem;
+    border: black solid;
+    padding:10px;
+    background-color: white;
+}
+table{
+    text-align: center;
+    width: 40rem;
+    height: 22rem; 
+    
+}
+th{
+    border: 1px black solid;
+}
+
