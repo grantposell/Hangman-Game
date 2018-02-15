@@ -11,13 +11,15 @@ var wrongLetters =[];
 //Game Counters
 var winCount = 0;
 var lossCount = 0;
-var guessesLeft = 0;
+var guessesLeft = 9;
 
 //Functions
 function startGame () {
     selectedWord = randomWordFood[Math.floor(Math.random() * randomWordFood.length)];
+    
     lettersInWord = selectedWord.split("");
     numberBlanks = lettersInWord.length;
+    
 
     //Reset
     guessesLeft = 9;
@@ -35,11 +37,7 @@ function startGame () {
     document.getElementById("numGuesses").innerHTML = guessesLeft;
     document.getElementById("winCounter").innerHTML = winCount;
     document.getElementById("lossCounter").innerHTML = lossCount;
-    //Testing
-    console.log(selectedWord);
-    console.log(lettersInWord);
-    console.log(numberBlanks);
-    console.log(blanksAndSuccesses);
+
 }
 function checkLetters(letter) {
     // Checks if letter exists in code
@@ -49,6 +47,7 @@ function checkLetters(letter) {
             isLetterInWord = true;
         }
     }
+
     //Check where in the word the letter it exists
     if (isLetterInWord){
         for (var i=0; i<numberBlanks; i++){
@@ -62,6 +61,31 @@ function checkLetters(letter) {
         numGuesses--
     }
 }
+function roundComplete(){
+    console.log("Win Count: " + winCount + " | Loss Count: " + lossCount +  "| Guesses Left " + guessesLeft);
+    document.getElementById("numGuesses").innerHTML = guessesLeft;
+    document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
+    //Check if user won
+    if (lettersInWord.toString() == blanksAndSuccesses.toString()) {
+        winCount++;
+        alert("You Won!");
+
+        //Update win counter
+        document.getElementById("winCounter").innerHTML = winCount;
+        
+        startGame();
+    }
+    else if (guessesLeft == 0) {
+        lossCount++;
+        alert("You lost!");
+
+        document.getElementById("lossCounter").innerHTML = lossCount;
+
+        startGame();
+    }
+}
+
 //Main Process
 //Starts the code for the first time
 startGame();
@@ -69,6 +93,10 @@ startGame();
 //Registering keycode
 
 document.onkeyup = function(event) {
-    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCas();
-    console.log(letterGuessed);
+    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(letterGuessed);
+    roundComplete;
+
+
+
 }
