@@ -4,9 +4,9 @@
 var randomWordFood = ["ceviche","crepes", "dumplings", "fajitas" , "gnocchi" , "pasta" , "pizza" , "ramen" , "schnitzel" , "tacos"];
 var selectedWord = "";
 var lettersInWord = [];
-var numberBlanks = 0;
+var numBlanks = 0;
 var blanksAndSuccesses = [];
-var wrongLetters =[];
+var lettersGuessed =[];
 
 //Game Counters
 var winCount = 0;
@@ -18,16 +18,17 @@ function startGame () {
     selectedWord = randomWordFood[Math.floor(Math.random() * randomWordFood.length)];
     
     lettersInWord = selectedWord.split("");
-    numberBlanks = lettersInWord.length;
+    numBlanks = lettersInWord.length;
+    console.log(numBlanks)
     
 
     //Reset
     guessesLeft = 9;
-    wrongLetters = [];
+    lettersGuessed = [];
     blanksAndSuccesses = [];
     
     //Putting words in the blanks
-    for (var i = 0; i < numberBlanks; i++)
+    for (var i = 0; i < numBlanks; i++)
     {
         blanksAndSuccesses.push("_");
     }
@@ -39,35 +40,49 @@ function startGame () {
     document.getElementById("lossCounter").innerHTML = lossCount;
 
 }
+
 function checkLetters(letter) {
     // Checks if letter exists in code
+    lettersGuessed.push(letter);
+    console.log(lettersGuessed)
     var isLetterInWord = false;
-    for (var i=0; i<numberBlanks; i++){
-        if(selectedWord[i] == letter){
-            isLetterInWord = true;
+    var letterGuessed = false;
+
+    for (var i=0; i<lettersGuessed.length; i++){
+        if(lettersGuessed[i] !== letter){
+            letterGuessed = true;
         }
     }
-
-    //Check where in the word the letter it exists
-    if (isLetterInWord){
-        for (var i=0; i<numberBlanks; i++){
+    if(!letterGuessed){
+        for (var i=0; i<numBlanks; i++){
             if(selectedWord[i] == letter){
-                blanksAndSuccesses[i] = letter;
+                isLetterInWord = true;
             }
         }
-    }
-    else{
-        wrongLetters.push(letter);
-        numGuesses--
+
+        //Check where in the word the letter it exists
+        if (isLetterInWord){
+            for (var i=0; i<numBlanks; i++){
+                if(selectedWord[i] == letter){
+                    blanksAndSuccesses[i] = letter;
+                }
+            }
+        }
+        else{
+            guessesLeft--;
+        }
+    } else {
+        console.log('Guess again')
     }
 }
+
 function roundComplete(){
     console.log("Win Count: " + winCount + " | Loss Count: " + lossCount +  "| Guesses Left " + guessesLeft);
     document.getElementById("numGuesses").innerHTML = guessesLeft;
     document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(" ");
-    document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
+    document.getElementById("lettersGuessed").innerHTML = lettersGuessed.join(" ");
     //Check if user won
-    if (lettersInWord.toString() == blanksAndSuccesses.toString()) {
+    if (lettersInWord.join("") == blanksAndSuccesses.join("")) {
         winCount++;
         alert("You Won!");
 
@@ -93,9 +108,10 @@ startGame();
 //Registering keycode
 
 document.onkeyup = function(event) {
-    var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-    checkLetters(letterGuessed);
-    roundComplete;
+    var lettersGuessed = event.key.toLowerCase();
+    console.log(lettersGuessed)
+    checkLetters(lettersGuessed);
+    roundComplete();
 
 
 
