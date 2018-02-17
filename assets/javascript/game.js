@@ -43,19 +43,20 @@ function startGame () {
 
 function checkLetters(letter) {
     // Checks if letter exists in code
-    lettersGuessed.push(letter);
+    
     console.log(lettersGuessed)
     var isLetterInWord = false;
     var letterGuessed = false;
 
     for (var i=0; i<lettersGuessed.length; i++){
-        if(lettersGuessed[i] !== letter){
+        if(lettersGuessed[i] === letter){
             letterGuessed = true;
         }
     }
     if(!letterGuessed){
+        lettersGuessed.push(letter);
         for (var i=0; i<numBlanks; i++){
-            if(selectedWord[i] == letter){
+            if(selectedWord[i] === letter){
                 isLetterInWord = true;
             }
         }
