@@ -1,7 +1,7 @@
 //Global Variables
 //================================================================
 //Arrays and variables for holding data
-var randomWordFood = ["ceviche","crepes", "dumplings", "fajitas" , "gnocchi" , "pasta" , "pizza" , "ramen" , "schnitzel" , "tacos"];
+var randomWordFood = ["burgers" , "ceviche" , "crepes", "dumplings", "fajitas" , "gnocchi" , "hotdogs" , "pasta" , "pancakes" , "pizza" , "ramen" , "schnitzel" , "sushi" , "tacos" , "tamales" , "waffles"];
 var selectedWord = "";
 var lettersInWord = [];
 var numBlanks = 0;
