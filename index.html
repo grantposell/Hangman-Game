@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman</title>
-    <!--reset for all browsers-->
-    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <!--Adding the stylesheet for the game-->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <!--Google Api's for fonts-->
@@ -20,46 +22,25 @@
             <br />Cuisine Edition</h1>
     </header>
     <br/>
-    <div class="hangtable">
-        <p class="pressbtn">Press any button to get started!</p>
-        <hr/>
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>
-                    <br />
-                    <br />
-                    <p>Wins</p>
-                    <br />
-                    <span id="winCounter">0</span>
-                    <br />
-                    <br />
-                    <p>Losses</p>
-                    <span id="lossCounter">0</span>
-                    <br />
-                    <br />
-                    <p>Current Word</p>
-                    <br />
-                    <span id="wordToGuess">_ _ _ _</span>
-                    <br />
-                    <br />
-                    <p>Number of Guesses remaining</p>
-                    <br />
-                    <span id="numGuesses">9</span>
-                    <br />
-                    <br />
-                    <p>Letters Guessed</p>
-                    <br />
-                    <span id="lettersGuessed"></span>
-                    <br />
-                    <br />
-                    
-                </th>
-            </tr>
-        </table>
+    <div class="card">
+        <div class="card-body">
+            <p class="pressbtn">Press any button to get started!</p>
+            <hr />
+            <p>Wins: <span id="winCounter">0</span></p>
+            <p>Losses: <span id="lossCounter">0</span></p>
+            <p>Current Word:  <span id="wordToGuess">_ _ _ _</span></p>
+            <br />
+            <p>Number of Guesses remaining: <span id="numGuesses">9</span></p>
+            <br />
+            <p>Letters Guessed</p>
+            <br />
+            <span id="lettersGuessed"></span>
+            <br />
+        </div>
     </div>
-<!--Link to JavaScript-->
-<script src="./assets/javascript/game.js"></script> 
+
+    <!--Link to JavaScript-->
+    <script src="./assets/javascript/game.js"></script>
 </body>
 
 </html>
