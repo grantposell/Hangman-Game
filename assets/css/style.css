@@ -1,5 +1,5 @@
 body{
-    background-image:url("../images/background.jpeg");
+    background-image:url("../images/background-min.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -25,5 +25,6 @@ p{
     height: 27rem;
     border: black solid;
     padding:10px;
+    background: initial;
 }
 
